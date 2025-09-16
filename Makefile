@@ -7,8 +7,6 @@ all: install db_setup
 install:
 	@echo "Installing duckdb and dbt-duckdb"
 	brew install duckdb
-	python3 -m venv venv
-	source ./venv/bin/activate
 	pip3 install -U duckdb==0.10.3 dbt-core dbt-duckdb==1.7.4
 
 db_setup:

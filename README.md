@@ -9,8 +9,9 @@ dbt based data pipeline to load given csv files into a data warehouse, validate 
 git clone https://github.com/aparna-k-s/shipping_price_analytics.git 
 cd shipping_price_analytics
 ```
-2. Set duckdb env variable, Run the make command to install duckdb, dbt and load csv files into duckdb
+2. Activate virtual env, set duckdb env variable, and run the make command to install duckdb, dbt and load csv files into duckdb
 ```
+python -m venv .venv && source .venv/bin/activate
 export DUCKDB_PATH="$(pwd)/<>.duckdb" 
 make
 ```
