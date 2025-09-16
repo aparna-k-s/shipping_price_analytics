@@ -7,7 +7,9 @@ all: install db_setup
 install:
 	@echo "Installing duckdb and dbt-duckdb"
 	brew install duckdb
-	uv pip install -U duckdb==0.10.3 dbt-core dbt-duckdb==1.7.4
+	python3 -m venv venv
+	source ./venv/bin/activate
+	pip3 install -U duckdb==0.10.3 dbt-core dbt-duckdb==1.7.4
 
 db_setup:
 	@echo "Creating schemas and static tables in DuckDB"
@@ -19,5 +21,5 @@ db_setup:
 	duckdb $(DB) -c ".read db_migration/create__datapoints__table.sql"
 	duckdb $(DB) -c ".read db_migration/create__charges__table.sql"
 	@echo "DuckDB initial set up completed"
-	@echo "DuckDB CLI:"
+	@echo "DuckDB CLI - run sql queries here. Exit before running dbt"
 	duckdb $(DB)

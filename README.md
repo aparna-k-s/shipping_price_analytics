@@ -30,7 +30,8 @@ dbt run
 ```
 5. Run the dbt macro to load datapoints and charges files incrementally
 ```
-dbt run-operation insert_csv_into_raw_table --args '{"schema":"", "table":"", "file_path":""}'
+dbt run-operation insert_csv_into_raw_table --args '{"schema":"raw", "table":"raw_datapoints", "file_path":"input_files/DE_casestudy_datapoints_2.csv"}'
+dbt run-operation insert_csv_into_raw_table --args '{"schema":"raw", "table":"raw_charges", "file_path":"input_files/DE_casestudy_charges_2.csv"}'
 dbt run 
 ```
 
