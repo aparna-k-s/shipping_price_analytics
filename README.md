@@ -52,7 +52,8 @@ dbt run
 
 Model Lineage 
 
-<img width="1185" height="380" alt="Pasted Graphic 2" src="https://github.com/user-attachments/assets/818dcfcb-023e-4878-9171-ead2c456be21" />
+<img width="1185" height="380" alt="Pasted Graphic 2" src="https://github.com/user-attachments/assets/59b700ad-fddd-4dbb-b95b-bc33fd98cd11" />
+
 
 
 
