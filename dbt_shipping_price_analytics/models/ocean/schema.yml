@@ -1,0 +1,60 @@
+
+version: 2
+
+models:
+  - name: stg_region_subregion_map
+    description: "Mapping the region hierarchy, Each region_slug will have all the sub region slugs under it irrespective of level"
+
+  - name: stg_port_region_map
+    description: "Each port with metadata and parent at all levels, for e.g taiwan_main will have 3 rows with 3 regions - taiwan_main, far_east_main, asia. Used for region aggregation"
+
+  - name: stg_exchange_rates_to_USD_daily
+    description: "Daily Exchange Rates to USD"
+    columns:
+      - name: day
+      - name: currency
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [ "day", "currency" ]
+
+  - name: stg_datapoints
+    description: "Fact Table for contract metadata"
+    columns:
+      - name: ORIGIN_PID
+        description: "Origin Port Id"
+        data_tests:
+          - not_null
+          - relationships:
+              to: source('staging', 'ports')
+              field: PID
+      - name: ORIGIN_PID
+        description: "Origin Port Id"
+        data_tests:
+          - not_null
+          - relationships:
+              to: source('staging', 'ports')
+              field: PID
+
+  - name: stg_datapoints_with_valid_dates
+    description: "Valid dates for all Datapoinsts, for e.g. a datapoint valid from 1st to 10th Jan 2022 will have 10 rows with dates 1,2,3..,9,10"
+
+  - name: stg_charges_original
+    description: "Charges with a null check"
+
+  - name: stg_charges_USD_agg
+    description: "Charges aggregated by datapoint (contract) in USD"
+
+  - name: stg_datapoints_price_USD
+    description: "Datapoint metadata with total price in USD"
+
+  - name: final_price_dq_check
+    description: "Calculate no of suppliers and companies for a combination of origin and destination ports, equipment and date"
+
+  - name: final_price_agg_by_port
+    description: "Mean and median price for a combination of origin and destination ports, equipment and date"
+
+  - name: final_shipping_metric_by_port
+    description: "Analytics table with port metadata with shipping lane"
+
+  - name: final_price_agg_by_region
+    description: "Analytics table with all region slug combinations"

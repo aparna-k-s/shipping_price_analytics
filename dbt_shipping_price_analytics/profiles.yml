@@ -1,0 +1,8 @@
+dbt_shipping_price_analytics:
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH') }}"
+      threads: 4
+
+  target: dev

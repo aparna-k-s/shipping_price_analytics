@@ -1,0 +1,21 @@
+version: 1
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: raw_exchange_rates_to_USD
+      - name: raw_datapoints
+      - name: raw_charges
+
+  - name: staging
+    schema: staging
+    tables:
+      - name: ports
+        description: Since ports is static for the project, de-duped and loaded to staging during set up
+      - name: regions
+        description: Since regions is static for the project, loaded directly to staging during set up
+      - name: country
+        description: Added from ports
+      - name: exchange_rates_to_USD
+        description: De-duped from raw to staging
